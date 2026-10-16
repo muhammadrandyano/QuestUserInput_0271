@@ -30,23 +30,21 @@ import androidx.compose.ui.unit.dp
 import com.example.pam_prak5.R
 
 @Composable
-fun FormDataDiri(modifier: Modifier) {
+fun FormDataDiri(modifier: Modifier){
     //variabel-variabel untuk mengingat nilai masukan dari keyboard
-    var textNama by remember { mutableStateOf(value = "") }
-    var textAlamat by remember { mutableStateOf(value = "") }
-    var textJK by remember { mutableStateOf(value = "") }
+    var textNama by remember {mutableStateOf(value = "")}
+    var textAlamat by remember {mutableStateOf(value = "")}
+    var textJK by remember {mutableStateOf(value = "")}
 
     //variabel-variabel untuk menyimpan data yang diperoleh dari komponen UI
-    var nama by remember { mutableStateOf(value = "") }
-    var alamat by remember { mutableStateOf(value = "") }
-    var jenis by remember { mutableStateOf(value = "") }
-    val gender: List<String> = listOf("Laki-laki", "Perempuan")
+    var nama by remember {mutableStateOf(value= "")}
+    var alamat by remember {mutableStateOf(value = "")}
+    var jenis by remember {mutableStateOf(value = "")}
+    val gender:List<String> = listOf("Laki-laki", "Perempuan")
 
-    Column(
-        modifier = Modifier.padding(top = 50.dp),
+    Column(modifier = Modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+        horizontalAlignment = Alignment.CenterHorizontally) {
 
         // 1. Input Nama Lengkap
         OutlinedTextField(
@@ -63,11 +61,10 @@ fun FormDataDiri(modifier: Modifier) {
         // 2. Pilihan Jenis Kelamin
         Row {
             gender.forEach { item ->
-                Row(
-                    modifier = Modifier.selectable(
-                        selected = textJK == item,
-                        onClick = { textJK = item }
-                    ), verticalAlignment = Alignment.CenterVertically) {
+                Row(modifier = Modifier.selectable(
+                    selected = textJK == item,
+                    onClick = { textJK = item }
+                ), verticalAlignment = Alignment.CenterVertically) {
                     RadioButton(
                         selected = textJK == item,
                         onClick = {
@@ -113,6 +110,21 @@ fun FormDataDiri(modifier: Modifier) {
             thickness = dimensionResource(id = R.dimen.divider_tipis),
             color = Color.DarkGray
         )
+
+        // 6. Elevated Card untuk Menampilkan Hasil
+        ElevatedCard (
+            elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.Black),
+            modifier = Modifier
+                .height(100.dp)
+                .width(300.dp)
+        ) {
+            Column(modifier = Modifier.padding(horizontal = 5.dp, vertical = 15.dp)) {
+                Text(text = "Nama : " + nama, color = Color.White)
+                Text(text = "Gender : " + jenis, color = Color.White)
+                Text(text = "Alamat : " + alamat, color = Color.White)
+            }
+        }
     }
 }
 

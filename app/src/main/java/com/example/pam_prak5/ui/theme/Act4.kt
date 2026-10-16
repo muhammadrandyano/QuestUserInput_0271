@@ -88,6 +88,21 @@ fun FormDataDiri(modifier: Modifier) {
                 textAlamat = it
             }
         )
+
+        // 4. Tombol Simpan Data
+        Button(
+            modifier = Modifier.fillMaxWidth(fraction = 1f),
+            // the button is enabled when the user makes a selection
+            enabled = textAlamat.isNotEmpty(),
+            onClick = {
+                nama = textNama
+                jenis = textJK
+                alamat = textAlamat
+            }
+        ) {
+            // Menggunakan string resource dari strings.xml
+            Text(stringResource(id = R.string.submit))
+        }
     }
 }
 

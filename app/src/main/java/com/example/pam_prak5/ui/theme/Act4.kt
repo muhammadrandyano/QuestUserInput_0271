@@ -103,6 +103,16 @@ fun FormDataDiri(modifier: Modifier) {
             // Menggunakan string resource dari strings.xml
             Text(stringResource(id = R.string.submit))
         }
+
+        // 5. Horizontal Divider
+        HorizontalDivider(
+            modifier = Modifier.padding(
+                bottom = dimensionResource(id = R.dimen.padding_medium),
+                top = dimensionResource(id = R.dimen.padding_medium)
+            ),
+            thickness = dimensionResource(id = R.dimen.divider_tipis),
+            color = Color.DarkGray
+        )
     }
 }
 

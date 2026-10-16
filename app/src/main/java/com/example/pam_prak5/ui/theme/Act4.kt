@@ -47,6 +47,18 @@ fun FormDataDiri(modifier: Modifier) {
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+        // 1. Input Nama Lengkap
+        OutlinedTextField(
+            value = textNama,
+            singleLine = true,
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier.width(250.dp),
+            label = { Text(text = "Nama Lengkap") },
+            onValueChange = {
+                textNama = it
+            }
+        )
     }
 }
 
